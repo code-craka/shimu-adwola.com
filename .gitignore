@@ -122,6 +122,9 @@ dist
 # OS files
 .DS_Store
 
+# npm lockfile (we use bun)
+package-lock.json
+
 # Deploy artifacts
 adwola-deploy.zip
 adwola.com.zip
