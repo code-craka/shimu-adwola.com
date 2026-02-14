@@ -6,7 +6,7 @@
 
 ## ✅ DONE — Fully Implemented
 
-### Pages (5/6 from plan)
+### Pages (6/6 from plan)
 | Page | Status | Notes |
 |------|--------|-------|
 | `/` Homepage | ✅ Done | Hero, stats counter, 3 workflow cards, How It Works, testimonials, trust signals, CTA |
@@ -14,13 +14,13 @@
 | `/about` | ✅ Done | Nahar's story, credentials, brand origin, mission |
 | `/case-studies` | ✅ Done | Dynamic Supabase fetch, loading skeleton, error state |
 | `/contact` | ✅ Done | Form with validation, Supabase submission, Calendly embed, toast feedback |
-| `/blog` | ❌ Missing | Planned in spec but not built yet |
+| `/blog` | ✅ Done | 3 sample posts, category filters (All/Automation/Tools/Guides), CTA section |
 
 ### Components
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Header | ✅ Done | Fixed nav, scroll effect, active links, mobile hamburger, logo (`slazzer-preview-p3nef.png`) |
-| Footer | ✅ Done | Logo, Quick Links, company name (LEVER N GEAR LTD.), address, email, social icons |
+| Header | ✅ Done | Fixed nav, scroll effect, active links, mobile hamburger, logo, Blog link added |
+| Footer | ✅ Done | Logo, Quick Links (incl. Blog), company name (LEVER N GEAR LTD.), address, email, social icons |
 | TestimonialsCarousel | ✅ Done | Supabase fetch, auto-rotate, fallback testimonials, Framer Motion |
 | ScrollToTop | ✅ Done | Scroll restoration on route change |
 
@@ -36,62 +36,56 @@
 ### Backend / Integrations
 | Item | Status | Notes |
 |------|--------|-------|
-| Supabase client | ✅ Done | Connected to live project |
+| Supabase client | ✅ Done | Connected to live project via env vars |
 | Contact form → Supabase | ✅ Done | Inserts to `contact_submissions` table |
-| Case studies → Supabase | ✅ Done | Fetches from `case_studies` table |
-| Testimonials → Supabase | ✅ Done | Fetches from `testimonials` table |
+| Case studies → Supabase | ✅ Done | Fetches from `case_studies` table (6 entries seeded) |
+| Testimonials → Supabase | ✅ Done | Fetches from `testimonials` table (6 entries seeded) |
 | Calendly embed | ✅ Done | `calendly.com/nahar-adwola/30min`, gold color |
 | Auth context | ✅ Done | `SupabaseAuthContext` — signUp, signIn, signOut |
 | SEO (Helmet) | ✅ Done | Every page has title + meta description |
 
----
-
-## ❌ NOT DONE — Still To Implement
-
-### Pages
-| Item | Priority | Notes |
-|------|----------|-------|
-| `/blog` page | MEDIUM | MDX-based blog, category filters, 2-3 sample posts (from plan §10.1) |
-
-### index.html Fixes
-| Item | Priority | Notes |
-|------|----------|-------|
-| Page `<title>` | HIGH | Still says "Hostinger Horizons" — should be "Adwola — Financial Automation Studio" |
-| `<meta name="generator">` | LOW | Still says "Hostinger Horizons" — remove or update |
-
-### Footer
-| Item | Priority | Notes |
-|------|----------|-------|
-| Real social media links | MEDIUM | LinkedIn, Twitter/X, YouTube URLs are generic placeholders |
-
 ### SEO & Technical
-| Item | Priority | Notes |
-|------|----------|-------|
-| Open Graph tags | MEDIUM | No og:title, og:description, og:image on any page |
-| JSON-LD structured data | LOW | Plan calls for LocalBusiness schema |
-| sitemap.xml | LOW | Auto-generation not set up |
-| robots.txt | LOW | Not present in public/ |
-
-### Homepage
-| Item | Priority | Notes |
-|------|----------|-------|
-| Real client logos | LOW | Social proof bar has placeholder boxes |
-
-### About Page
-| Item | Priority | Notes |
-|------|----------|-------|
-| Real founder photo | LOW | Currently shows "NS" initials placeholder |
-
-### Case Studies
-| Item | Priority | Notes |
-|------|----------|-------|
-| Seed data in Supabase | HIGH | `case_studies` table needs real/sample data or it shows empty |
-| Testimonials data | HIGH | `testimonials` table needs data or falls back to hardcoded |
+| Item | Status | Notes |
+|------|--------|-------|
+| Page `<title>` | ✅ Done | "Adwola — Financial Automation Studio" (was "Hostinger Horizons") |
+| `<meta name="generator">` | ✅ Done | Removed "Hostinger Horizons" generator tag |
+| Open Graph tags | ✅ Done | og:title, og:description, og:type, og:url, og:image on all 6 pages |
+| JSON-LD structured data | ✅ Done | LocalBusiness schema in `index.html` (company, address, founder) |
+| sitemap.xml | ✅ Done | Static sitemap in `public/sitemap.xml` covering all 6 routes |
+| robots.txt | ✅ Done | `public/robots.txt` allows all crawlers, references sitemap |
 
 ### Security
+| Item | Status | Notes |
+|------|--------|-------|
+| `customSupabaseClient.js` | ✅ Done | Removed hardcoded JWT — now uses `import.meta.env` vars only |
+
+### Content/Data
+| Item | Status | Notes |
+|------|--------|-------|
+| Case studies in Supabase | ✅ Done | 6 case studies seeded (3 pre-existing + 3 new) |
+| Testimonials in Supabase | ✅ Done | 6 testimonials seeded (2 pre-existing + 4 new) |
+| Seed script | ✅ Done | `tools/seed-supabase.js` — requires `SUPABASE_SECRET_KEY` in `.env.local` |
+
+### Deployment
+| Item | Status | Notes |
+|------|--------|-------|
+| Production build | ✅ Done | `bun run build` → `dist/` |
+| Hostinger upload | ✅ Done | All files uploaded via FTP to `public_html` |
+| `.htaccess` SPA routing | ✅ Done | Rewrites all routes to `index.html` for React Router |
+| Cloudflare DNS | ✅ Done | A records (`@` + `www`) → `147.93.17.103`, Proxied |
+| SSL | ✅ Done | Via Cloudflare proxy (orange cloud) |
+| GitHub repo | ✅ Done | Pushed to `https://github.com/code-craka/shimu-adwola.com.git` |
+| Site live | ✅ Done | `https://adwola.com` — all routes returning 200 |
+
+---
+
+## ⏳ REMAINING — Nice-to-Have
+
 | Item | Priority | Notes |
 |------|----------|-------|
-| `customSupabaseClient.js` | HIGH | Contains hardcoded JWT token — should use env vars only |
+| Real social media links | LOW | LinkedIn, Twitter/X, YouTube URLs are still generic placeholders — update when ready |
+| Real client logos | LOW | Social proof bar on homepage has placeholder boxes |
+| Real founder photo | LOW | About page currently shows "NS" initials placeholder |
 
 ---
 
@@ -99,24 +93,14 @@
 
 | Category | Done | Total | % |
 |----------|------|-------|---|
-| Pages | 5 | 6 | 83% |
+| Pages | 6 | 6 | 100% |
 | Core components | 4 | 4 | 100% |
 | Branding/assets | 5 | 5 | 100% |
-| Backend integrations | 6 | 6 | 100% |
-| SEO/Technical | 2 | 6 | 33% |
-| Content/Data | 1 | 4 | 25% |
+| Backend integrations | 7 | 7 | 100% |
+| SEO/Technical | 6 | 6 | 100% |
+| Content/Data | 3 | 3 | 100% |
+| Deployment | 7 | 7 | 100% |
 
-**Overall: ~80% complete for MVP launch**
+**Overall: ~97% complete — MVP launched and live at https://adwola.com**
 
----
-
-## 🚀 Recommended Next Steps (Priority Order)
-
-1. **Fix `index.html` title** — "Adwola — Financial Automation Studio"
-2. **Seed Supabase tables** — case_studies + testimonials with real/sample data
-3. **Add real social media URLs** in Footer
-4. **Add Open Graph meta tags** on all pages
-5. **Build `/blog` page** — MDX-based with 2-3 starter posts
-6. **Fix `customSupabaseClient.js`** — remove hardcoded JWT, use env vars
-7. **Add founder photo** to About page
-8. **Add sitemap.xml + robots.txt**
+Only remaining items are content assets (real social URLs, client logos, founder photo) which require materials from the client.
