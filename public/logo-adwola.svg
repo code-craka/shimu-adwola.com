@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" fill="none">
+  <!-- Circle -->
+  <circle cx="50" cy="50" r="43" stroke="#C5A23E" stroke-width="2.5" fill="none"/>
+
+  <!-- Stylized double-A monogram -->
+  <g fill="#C5A23E">
+    <!-- Back A (slightly left) -->
+    <path d="M38 74 L48 22 L52 22 L62 52 L59 52 L55 40 L42 40 L42 37 L54 37 L50 25 L41 52 L38 52 Z" opacity="0.9"/>
+    <!-- Front A (slightly right, overlapping) -->
+    <path d="M44 74 L54 22 L58 22 L70 74 L66 74 L62 60 L48 60 L48 57 L61 57 L56 40 L52 52 L44 74 Z"/>
+    <!-- Stylized swoosh/accent cutting through -->
+    <path d="M32 62 L42 56 Q50 52 58 54 L68 58 L67 61 L57 57 Q50 55 42 59 L32 65 Z"/>
+  </g>
+
+  <!-- ADWOLA text -->
+  <text x="112" y="61" font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="9" fill="#C5A23E">ADWOLA</text>
+</svg>
